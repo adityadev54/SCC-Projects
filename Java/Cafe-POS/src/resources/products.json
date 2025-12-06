@@ -1,0 +1,145 @@
+[
+  {
+    "name": "Espresso",
+    "price": 3.00,
+    "quantity": 50,
+    "category": "Coffee",
+    "image": "/images/espresso.jpeg"
+  },
+  {
+    "name": "Flat White",
+    "price": 5.50,
+    "quantity": 50,
+    "category": "Coffee",
+    "image": "/images/flatwhite.jpeg"
+  },
+  {
+    "name": "Macchiato",
+    "price": 4.25,
+    "quantity": 50,
+    "category": "Coffee",
+    "image": "/images/macchiato.jpeg"
+  },
+  {
+    "name": "Mocha",
+    "price": 5.75,
+    "quantity": 50,
+    "category": "Coffee",
+    "image": "/images/mocha.jpeg"
+  },
+  {
+    "name": "Cold Brew",
+    "price": 4.50,
+    "quantity": 50,
+    "category": "Coffee",
+    "image": "/images/coldbrew.jpeg"
+  },
+
+  {
+    "name": "Chai Latte",
+    "price": 4.50,
+    "quantity": 50,
+    "category": "Non coffee",
+    "image": "/images/chailatte.jpeg"
+  },
+  {
+    "name": "Matcha Latte",
+    "price": 5.00,
+    "quantity": 50,
+    "category": "Non coffee",
+    "image": "/images/matchalatte.jpeg"
+  },
+  {
+    "name": "Green Tea",
+    "price": 3.00,
+    "quantity": 50,
+    "category": "Non coffee",
+    "image": "/images/greentea.jpeg"
+  },
+  {
+    "name": "Lemonade",
+    "price": 3.50,
+    "quantity": 50,
+    "category": "Non coffee",
+    "image": "/images/lemonde.jpeg"
+  },
+  {
+    "name": "Smoothie",
+    "price": 5.50,
+    "quantity": 50,
+    "category": "Non coffee",
+    "image": "/images/smoothie.jpeg"
+  },
+
+  {
+    "name": "Blueberry Muffin",
+    "price": 3.50,
+    "quantity": 40,
+    "category": "Dessert",
+    "image": "/images/blueberry_muffin.jpeg"
+  },
+  {
+    "name": "Chocolate Chip Cookie",
+    "price": 2.50,
+    "quantity": 50,
+    "category": "Dessert",
+    "image": "/images/choc_chip_cookie.jpeg"
+  },
+  {
+    "name": "Cinnamon Roll",
+    "price": 4.00,
+    "quantity": 30,
+    "category": "Dessert",
+    "image": "/images/cinnamon_roll.jpeg"
+  },
+  {
+    "name": "Banana Bread",
+    "price": 3.75,
+    "quantity": 30,
+    "category": "Dessert",
+    "image": "/images/banana_bread.jpeg"
+  },
+  {
+    "name": "Scone",
+    "price": 3.25,
+    "quantity": 40,
+    "category": "Dessert",
+    "image": "/images/scone.jpeg"
+  },
+
+  {
+    "name": "Croissant",
+    "price": 3.00,
+    "quantity": 40,
+    "category": "Food",
+    "image": "/images/croissant.jpeg"
+  },
+  {
+    "name": "Avocado Toast",
+    "price": 6.00,
+    "quantity": 40,
+    "category": "Food",
+    "image": "/images/avocado_toast.jpeg"
+  },
+  {
+    "name": "Ham and Cheese Sandwich",
+    "price": 5.50,
+    "quantity": 30,
+    "category": "Food",
+    "image": "/images/ham_and_cheese_sandwich.jpeg"
+  },
+  {
+    "name": "Bagel with Cream Cheese",
+    "price": 4.00,
+    "quantity": 35,
+    "category": "Food",
+    "image": "/images/bagel_with_cream_cheese.jpeg"
+  },
+  {
+    "name": "Pancakes",
+    "price": 5.00,
+    "quantity": 30,
+    "category": "Food",
+    "image": "/images/pancakes.jpeg"
+  }
+]

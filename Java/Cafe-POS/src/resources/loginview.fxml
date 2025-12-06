@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER_LEFT" spacing="20" prefHeight="400" prefWidth="300" fx:controller="views.LoginView" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <padding>
+        <Insets top="50" right="20" bottom="20" left="20"/>
+    </padding>
+    <Label text="Cafe POS Login" styleClass="title"/>
+    <Label text="Username:" styleClass="label"/>
+    <TextField fx:id="usernameField" promptText="Enter username"/>
+    <Label text="Password:" styleClass="label"/>
+    <PasswordField fx:id="passwordField" promptText="Enter password"/>
+    <Button text="Login" onAction="#handleLogin" styleClass="button" prefWidth="400"/>
+    <Label fx:id="errorLabel" styleClass="error-label" text="" visible="false"/>
+</VBox>
