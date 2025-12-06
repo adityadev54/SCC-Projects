@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Your Meal Plan";
+}
+
+<div class="bg-[#f0fdf4] min-h-screen p-8">
+    <div class="mt-8 bg-white rounded-lg shadow-md p-10 border border-[#d1fae5]">
+        <div class="flex justify-between items-center mb-8 flex-wrap gap-4">
+            <h1 class="text-3xl font-semibold text-[#1b4332]">Your Personalized Meal Plan</h1>
+
+            @if (ViewBag.MealPlan != null)
+            {
+                <div class="flex flex-wrap gap-4">
+                    <!-- Download MealPlan PDF Button -->
+                    <form asp-controller="MealPlan" asp-action="DownloadMealPlan" method="post">
+                        <button type="submit"
+                                class="bg-[#4CAF50] hover:bg-[#388e3c] text-white font-semibold py-2 px-4 rounded-md shadow-md transition">
+                            📄 Download Plan
+                        </button>
+                    </form>
+
+                    <!-- Disabled Email (Coming Soon) For Now -->
+                    <button disabled title="Email feature coming soon"
+                            class="bg-blue-300 text-white font-semibold py-2 px-4 rounded-md opacity-60 cursor-not-allowed">
+                        ✉️ Email Plan
+                    </button>
+
+                    <!-- Refine Button For MealPlan-->
+                    <a asp-controller="MealPlan" asp-action="MealPlanForm"
+                       class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-md transition">
+                        📝 Refine Meal Plan
+                    </a>
+                </div>
+            }
+        </div>
+
+        @if (ViewBag.MealPlan != null)
+        {
+            <div class="mb-8">
+                <div class="p-6 border border-[#4CAF50] bg-[#ecfdf5] rounded-md">
+                    <pre class="whitespace-pre-wrap text-[#1b4332] text-base leading-relaxed font-mono">@ViewBag.MealPlan</pre>
+                </div>
+            </div>
+        }
+        else if (ViewBag.ErrorMessage != null)
+        {
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8" role="alert">
+                <strong class="font-bold">Error:</strong>
+                <span class="block sm:inline">@ViewBag.ErrorMessage</span>
+            </div>
+        }
+        else
+        {
+            <p class="text-gray-700 text-center py-8">No meal plan generated yet.</p>
+        }
+
+        <div class="mt-8">
+            <button onclick="window.history.back();"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-md shadow-sm transition">
+                ← Back to Previous Page
+            </button>
+        </div>
+    </div>
+</div>

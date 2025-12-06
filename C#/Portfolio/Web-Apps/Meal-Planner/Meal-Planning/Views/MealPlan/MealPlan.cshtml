@@ -1,0 +1,242 @@
+﻿@{
+    ViewData["Title"] = "Meal Planner";
+}
+
+<div class="bg-white rounded-lg shadow-md p-8 text-black flex flex-col min-h-screen pt-16">
+    <h2 class="text-3xl font-semibold text-green-600 mb-8 text-center">Tell Us About Your Meal Preferences</h2>
+
+    <!-- Progress Bar Style -->
+    <div class="progress-bar-container mb-8 flex flex-col items-center z-0">
+        <div class="relative w-full max-w-lg">
+            <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-300"></div>
+            <div class="progress-line absolute top-1/2 left-0 h-1 bg-green-600 transition-all duration-500" style="width: 0%;"></div>
+            <div class="flex w-full justify-between relative z-10">
+                @for (var i = 0; i < 5; i++)
+                {
+                    <div class="progress-step w-10 h-10 flex items-center justify-center rounded-full bg-gray-400 text-gray-900 font-semibold transition-all duration-300">
+                        @(i + 1)
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="progress-labels mt-4 grid grid-cols-5 text-center text-gray-600 text-sm w-full max-w-lg">
+            <span class="block text-center">Goals</span>
+            <span class="block text-center">Restrictions</span>
+            <span class="block text-center">Favorites</span>
+            <span class="block text-center">Avoid</span>
+            <span class="block text-center">Meals</span>
+        </div>
+    </div>
+
+    <form id="mealPlanForm" action="/MealPlan/Generate" method="post" class="space-y-6 flex-grow">
+        <!-- Step 1: Dietary Goals -->
+        <fieldset id="dietaryGoals" class="form-step space-y-4">
+            <legend class="text-gray-700 font-semibold text-lg">Dietary Goals</legend>
+            <div class="space-y-3">
+                @foreach (var goal in new[] { "General Health", "Weight Loss", "Maintain Weight" })
+                {
+                    <label class="flex items-center bg-gray-100 p-3 rounded-lg cursor-pointer hover:bg-gray-200 transition">
+                        <input type="radio" class="hidden peer" name="dietaryGoal" value="@goal">
+                        <div class="option-box"></div>
+                        <span class="ml-3 text-sm text-gray-700">@goal</span>
+                    </label>
+                }
+                <input type="text" name="customGoal" placeholder="Enter your own goal..." class="option-input">
+            </div>
+            <div class="navigation-buttons">
+                <button type="button" class="next-step" data-step="restrictions">Next</button>
+            </div>
+        </fieldset>
+
+        <!-- Step 2: Dietary Restrictions -->
+        <fieldset id="restrictions" class="form-step space-y-4 hidden">
+            <legend class="text-gray-700 font-semibold text-lg">Dietary Restrictions</legend>
+            <div class="space-y-3">
+                @foreach (var restriction in new[] { "Vegetarian", "Vegan", "Gluten-Free", "Lactose-Free" })
+                {
+                    <label class="flex items-center bg-gray-100 p-3 rounded-lg cursor-pointer hover:bg-gray-200 transition">
+                        <input type="checkbox" class="hidden peer" name="dietaryRestrictions" value="@restriction">
+                        <div class="option-box"></div>
+                        <span class="ml-3 text-sm text-gray-700">@restriction</span>
+                    </label>
+                }
+                <input type="text" name="customRestriction" placeholder="Enter your own restriction..." class="option-input">
+            </div>
+            <div class="navigation-buttons">
+                <button type="button" class="prev-step" data-step="dietaryGoals">Previous</button>
+                <button type="button" class="next-step" data-step="favorites">Next</button>
+            </div>
+        </fieldset>
+
+        <!-- Step 3: Favorite Foods -->
+        <fieldset id="favorites" class="form-step space-y-4 hidden">
+            <legend class="text-gray-700 font-semibold text-lg">Favorite Foods</legend>
+            <input type="text" name="favoriteFoods" placeholder="Enter your favorite foods..." class="option-input">
+            <div class="navigation-buttons">
+                <button type="button" class="prev-step" data-step="restrictions">Previous</button>
+                <button type="button" class="next-step" data-step="avoidFoods">Next</button>
+            </div>
+        </fieldset>
+
+        <!-- Step 4: Foods to Avoid -->
+        <fieldset id="avoidFoods" class="form-step space-y-4 hidden">
+            <legend class="text-gray-700 font-semibold text-lg">Foods to Avoid</legend>
+            <input type="text" name="avoidFoods" placeholder="Enter foods you want to avoid..." class="option-input">
+            <div class="navigation-buttons">
+                <button type="button" class="prev-step" data-step="favorites">Previous</button>
+                <button type="button" class="next-step" data-step="mealsPerDay">Next</button>
+            </div>
+        </fieldset>
+
+        <!-- Step 5: Meals Per Day -->
+        <fieldset id="mealsPerDay" class="form-step space-y-4 hidden">
+            <legend class="text-gray-700 font-semibold text-lg">How many meals per day?</legend>
+            <div class="space-y-3">
+                @foreach (var mealCount in new[] { "2 (Brunch & Dinner)", "3 (Breakfast, Lunch, Dinner)", "4 (Including Snacks)" })
+                {
+                    <label class="flex items-center bg-gray-100 p-3 rounded-lg cursor-pointer hover:bg-gray-200 transition">
+                        <input type="radio" class="hidden peer" name="mealsPerDay" value="@mealCount">
+                        <div class="option-box"></div>
+                        <span class="ml-3 text-sm text-gray-700">@mealCount</span>
+                    </label>
+                }
+                <input type="text" name="customMeals" placeholder="Enter a custom number of meals..." class="option-input">
+            </div>
+            <div class="navigation-buttons">
+                <button type="button" class="prev-step" data-step="avoidFoods">Previous</button>
+                <button type="submit" class="submit-button">Generate Meal Plan</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!-- Script for auto-save and step show -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const formSteps = document.querySelectorAll(".form-step");
+        const progressSteps = document.querySelectorAll(".progress-step");
+        const progressLine = document.querySelector(".progress-line");
+        const form = document.getElementById("mealPlanForm");
+
+        // Load the saved data
+        const savedData = JSON.parse(localStorage.getItem("mealFormData")) || {};
+        for (const [name, value] of Object.entries(savedData)) {
+            const field = form.elements[name];
+            if (!field) continue;
+
+            if (field.type === "checkbox" || field.type === "radio") {
+                document.querySelectorAll(`[name="${name}"]`).forEach(el => {
+                    if (Array.isArray(value)) {
+                        el.checked = value.includes(el.value);
+                    } else {
+                        el.checked = el.value === value;
+                    }
+                });
+            } else {
+                field.value = value;
+            }
+        }
+
+        // Save to the localStorage on change
+        form.querySelectorAll("input").forEach(input => {
+            input.addEventListener("change", () => {
+                const formData = new FormData(form);
+                const dataToSave = {};
+                formData.forEach((val, key) => {
+                    if (dataToSave[key]) {
+                        if (Array.isArray(dataToSave[key])) {
+                            dataToSave[key].push(val);
+                        } else {
+                            dataToSave[key] = [dataToSave[key], val];
+                        }
+                    } else {
+                        dataToSave[key] = val;
+                    }
+                });
+                localStorage.setItem("mealFormData", JSON.stringify(dataToSave));
+            });
+        });
+
+        function showStep(stepId) {
+            formSteps.forEach(step => step.classList.add("hidden"));
+            document.getElementById(stepId).classList.remove("hidden");
+
+            let stepIndex = Array.from(formSteps).findIndex(step => step.id === stepId);
+            progressLine.style.width = `${(stepIndex / (formSteps.length - 1)) * 100}%`;
+
+            progressSteps.forEach((circle, index) => {
+                if (index <= stepIndex) {
+                    circle.classList.add("bg-green-600", "text-white");
+                    circle.classList.remove("bg-gray-400", "text-gray-900");
+                } else {
+                    circle.classList.add("bg-gray-400", "text-gray-900");
+                    circle.classList.remove("bg-green-600", "text-white");
+                }
+            });
+        }
+
+        document.querySelectorAll(".next-step").forEach(button => {
+            button.addEventListener("click", function () {
+                let nextStep = this.getAttribute("data-step");
+                showStep(nextStep);
+            });
+        });
+
+        document.querySelectorAll(".prev-step").forEach(button => {
+            button.addEventListener("click", function () {
+                let prevStep = this.getAttribute("data-step");
+                showStep(prevStep);
+            });
+        });
+
+        // Start on the first step
+        showStep("dietaryGoals"); 
+    });
+</script>
+
+
+<!-- Meal Plan Custom CSS -->
+<style>
+    .option-box {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #4CAF50;
+        border-radius: 5px;
+        background-color: #ecfdf5;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="radio"]:checked + .option-box,
+    input[type="checkbox"]:checked + .option-box {
+        background-color: #4CAF50;
+    }
+
+    .option-input {
+        width: 100%;
+        background-color: #ecfdf5;
+        color: #1b4332;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+        border: 1px solid #d1fae5;
+    }
+
+    .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .next-step, .prev-step, .submit-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .next-step:hover, .prev-step:hover, .submit-button:hover {
+            background-color: #388e3c;
+        }
+
+</style>

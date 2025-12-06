@@ -1,0 +1,175 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/*My CSS*/
+
+body {
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #ffd700 !important;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+.btn-outline-primary {
+    border-radius: 5px;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #e7f1ff;
+    }
+
+.table th a {
+    color: #212529;
+}
+
+    .table th a:hover {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.alert {
+    border-radius: 8px;
+}
+
+.pagination .page-link {
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.5rem 0;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+}
+
+.category-badge {
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
+    border-radius: 12px;
+    color: white;
+}
+
+    .category-badge[data-category="bakery"] {
+        background-color: #d4a017;
+    }
+
+    .category-badge[data-category="beverages"] {
+        background-color: #1e90ff;
+    }
+
+    .category-badge[data-category="candy"] {
+        background-color: #ff69b4;
+    }
+
+    .category-badge[data-category="cereal"] {
+        background-color: #32cd32;
+    }
+
+    .category-badge[data-category="chocolate"] {
+        background-color: #8b4513;
+    }
+
+    .category-badge[data-category="condiments"] {
+        background-color: #ff4500;
+    }
+
+    .category-badge[data-category="dairy"] {
+        background-color: #f0f8ff;
+        color: #333;
+    }
+
+    .category-badge[data-category="frozen"] {
+        background-color: #00ced1;
+    }
+
+    .category-badge[data-category="pasta"] {
+        background-color: #ffa500;
+    }
+
+    .category-badge[data-category="snacks"] {
+        background-color: #ff6347;
+    }
+
+@media (max-width: 991px) {
+    .navbar form {
+        margin-top: 10px;
+    }
+
+    .card-body.collapse:not(.show) {
+        display: none;
+    }
+}

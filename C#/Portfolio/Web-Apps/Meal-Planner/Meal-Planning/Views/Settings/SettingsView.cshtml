@@ -1,0 +1,65 @@
+﻿@using GoldenMenu.Models.Auth
+@model GoldenMenu.Models.Auth.UserProfileViewModel
+@{
+    ViewBag.Title = "Settings";
+}
+
+<div class="mt-8 max-w-5xl mx-auto px-4 py-6 space-y-8">
+    <h2 class="text-3xl font-semibold text-gray-900">Account Settings</h2>
+
+    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Personal Information</h3>
+        <p class="text-gray-600 text-sm mb-6">Manage your personal details.</p>
+        @using (Html.BeginForm("UpdateProfile", "Settings", FormMethod.Post, new { @class = "space-y-4" }))
+        {
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                <div>
+                    @Html.LabelFor(m => m.FirstName, new { @class = "block text-sm font-medium text-gray-700" })
+                    <div class="mt-1">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2.5" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-red-500 text-xs italic" })
+                    </div>
+                </div>
+
+                <div>
+                    @Html.LabelFor(m => m.LastName, new { @class = "block text-sm font-medium text-gray-700" })
+                    <div class="mt-1">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2.5" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-red-500 text-xs italic" })
+                    </div>
+                </div>
+
+                <div class="md:col-span-2">
+                    @Html.LabelFor(m => m.Email, new { @class = "block text-sm font-medium text-gray-700" })
+                    <div class="mt-1">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "shadow-sm block w-full sm:text-sm border border-gray-300 rounded-md p-2.5 bg-gray-100 text-gray-500 cursor-not-allowed", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    Save Changes
+                </button>
+            </div>
+        }
+    </div>
+
+    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Change Password</h3>
+        <p class="text-gray-600 text-sm mb-6">Update your account password.</p>
+        <div id="change-password">
+            @{
+                Html.RenderPartial("_ChangePasswordPartial", new ChangePasswordViewModel());
+            }
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">App Info</h3>
+        <div id="app-version" class="text-gray-700 text-sm">
+            <p class="mb-2">@Html.Partial("_VersionPartial", (string)ViewBag.Version)</p>
+            
+        </div>
+    </div>
+</div>

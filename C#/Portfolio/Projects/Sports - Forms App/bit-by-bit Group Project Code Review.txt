@@ -1,0 +1,15 @@
+I like how Adam Quinn, Katherine Vykhovanets, and Aditya Patel put all of their creativity and
+different coding styles into their collaboration. I especially like background when Adam present
+the three sports of racing, rugby, and soccer to make it look like a real-life stadium after logining in.
+Each sports is show a different style of information presented when clicked on a sport
+with racing showing the racers, rubgy showing teams/individual stats, and soccer showing team and
+choosing their team to see their stats.
+
+Within the code is organized with different folders to hold their codes and data for each sports. There are
+some comments within each classes of data because the name is self exploratory, but would like to have it within the
+code just in case for users. However, the Form1.cs has comments in there to explain of whats happening when first 
+running the program but does not show their name and their members on the team.
+
+Overall, their work ethic and skills have been greatly shown within their presentation on the 12th and code review. 
+You guys have work extremely hard together to make this program to become a real-life program for users
+to use in the future. Great work! :)

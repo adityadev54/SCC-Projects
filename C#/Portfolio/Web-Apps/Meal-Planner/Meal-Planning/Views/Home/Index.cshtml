@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-white py-20 text-black relative w-full">
+    <div class="mx-auto">
+        <!-- Hero Section -->
+        <section class="py-20 px-6 lg:px-20 flex flex-col-reverse lg:flex-row items-center gap-14 max-w-7xl mx-auto">
+            <div class="lg:w-1/2">
+                <h1 class="text-5xl lg:text-6xl font-bold text-[#1B1B1B] leading-tight mb-6">
+                    Healthy Eating, Made Simple & Enjoyable
+                </h1>
+                <p class="text-lg text-[#37474F] mb-8 leading-relaxed">
+                    Personalized meal plans designed just for you. No stress, no hassle—just nutritious meals tailored to your needs.
+                </p>
+                <a href="#how-it-works"
+                   class="inline-block bg-gradient-to-r from-[#4CAF50] to-[#388E3C] hover:from-[#43A047] hover:to-[#2E7D32] text-white font-semibold py-4 px-10 rounded-xl text-lg shadow-md transition">
+                    Start Eating Better Today
+                </a>
+            </div>
+            <div class="lg:w-1/2 text-center group">
+                <img src="~/assets/eating-in-group.jpg" alt="Healthy Food and Elderly"
+                     class="rounded-xl shadow-xl w-full max-w-md mx-auto transform transition duration-500 group-hover:scale-105 group-hover:shadow-2xl" />
+            </div>
+
+        </section>
+
+        <!-- Special Features Section From Golden Menu-->
+        <section class="py-16 text-center max-w-5xl mx-auto px-6">
+            <h2 class="text-4xl font-semibold text-[#2E7D32] mb-10">What Makes Golden Menu Special?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white border-t-4 border-[#2E7D32] rounded-lg shadow-sm">
+                    <div class="flex flex-col items-center">
+                        <span class="text-4xl text-[#2E7D32] mb-4">👤</span>
+                        <h3 class="text-2xl font-semibold text-[#2E7D32] mb-2">Personalized for You</h3>
+                        <p class="text-[#37474F] text-lg">Get meal plans based on your favorite foods and dietary needs.</p>
+                    </div>
+                </div>
+                <div class="p-8 bg-white border-t-4 border-[#2E7D32] rounded-lg shadow-sm">
+                    <div class="flex flex-col items-center">
+                        <span class="text-4xl text-[#2E7D32] mb-4">📋</span>
+                        <h3 class="text-2xl font-semibold text-[#2E7D32] mb-2">Easy to Follow</h3>
+                        <p class="text-[#37474F] text-lg">Simple steps, clear instructions, and a meal plan you’ll love.</p>
+                    </div>
+                </div>
+                <div class="p-8 bg-white border-t-4 border-[#2E7D32] rounded-lg shadow-sm">
+                    <div class="flex flex-col items-center">
+                        <span class="text-4xl text-[#2E7D32] mb-4">⏱️</span>
+                        <h3 class="text-2xl font-semibold text-[#2E7D32] mb-2">Saves You Time</h3>
+                        <p class="text-[#37474F] text-lg">Spend less time planning and more time enjoying your meals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section id="how-it-works" class="py-24 max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-semibold text-[#2E7D32] mb-12 text-center">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @{
+                    string[] steps = { "Login/Register", "Open MealPlanner", "Pick Your Favorites", "Generate Your Plan", "Review & Adjust", "Download & Enjoy" };
+                    string[] descriptions = { "Create an account or log in to get started.", "Open the meal planner to begin your journey.", "Tell us what you like & dislike.", "We’ll create a perfect plan instantly.", "Make any changes you’d like.", "Download it or Email it!" };
+                    string[] icons = { "👤", "📅", "❤️", "⚙️", "✏️", "⬇️" }; // Replace with SVGs or icon library for production
+                }
+
+                @for (int i = 0; i < steps.Length; i++)
+                {
+                    <div class="flex flex-col items-center p-8 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        <div class="w-16 h-16 rounded-full bg-[#2E7D32] flex items-center justify-center text-white text-3xl mb-4">
+                            @icons[i]
+                        </div>
+                        <h3 class="text-2xl font-semibold text-[#2E7D32] mb-2 text-center">@steps[i]</h3>
+                        <p class="text-[#37474F] text-center text-lg max-w-xs mx-auto">@descriptions[i]</p>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="py-16 text-center bg-white border-t border-gray-200 mt-8">
+            <h2 class="text-3xl font-semibold text-[#1B1B1B] mb-2">Ready to Start Your Meal Plan?</h2>
+            <p class="text-lg text-[#37474F] mb-12">Get your personalized meal plan today. Start now!</p>
+            <a href="/MealPlan/MealPlanForm"
+               class="inline-block bg-gradient-to-r from-[#4CAF50] to-[#388E3C] hover:from-[#43A047] hover:to-[#2E7D32] text-white font-semibold py-4 px-10 rounded-xl text-lg shadow-md transition">
+                Create My Meal Plan
+            </a>
+        </section>
+    </div>
+</div>
+
+<!-- Added the Inter Font Link -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+</style>

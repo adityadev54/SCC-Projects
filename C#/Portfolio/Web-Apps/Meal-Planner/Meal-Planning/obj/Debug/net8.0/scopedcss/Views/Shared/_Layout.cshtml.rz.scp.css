@@ -1,0 +1,60 @@
+/* Set navbar to silver */
+.navbar[b-hmzfzzwd1y] {
+    background-color: #C0C0C0 !important; /* Silver color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar text color */
+.navbar-nav a[b-hmzfzzwd1y] {
+    color: #333 !important;
+}
+
+/* Hero Section: Full screen layout */
+.hero-section[b-hmzfzzwd1y] {
+    color: white;
+    text-align: center;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+    /* Hero Section Title */
+    .hero-section h1[b-hmzfzzwd1y] {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .hero-section p[b-hmzfzzwd1y] {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+    }
+
+/* Button styling */
+.btn-primary[b-hmzfzzwd1y] {
+    background-color: #258cfb;
+    border-color: #258cfb;
+}
+
+/* Footer styling */
+footer[b-hmzfzzwd1y] {
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+/* Ensure the navbar and hero section don't overlap with other content */
+body[b-hmzfzzwd1y] {
+    padding-top: 70px; /* Adjust for fixed navbar height */
+}
+
+/* Add responsiveness for smaller devices */
+@media (max-width: 768px) {
+    .hero-section h1[b-hmzfzzwd1y] {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p[b-hmzfzzwd1y] {
+        font-size: 1rem;
+    }
+}

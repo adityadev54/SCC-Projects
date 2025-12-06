@@ -1,0 +1,21 @@
+﻿@model FoodWebApp.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container mt-4">
+    <h1 class="text-danger">Error</h1>
+    <div class="alert alert-danger">
+        <h4>An error occurred while processing your request.</h4>
+        @if (!string.IsNullOrEmpty(Model?.Message))
+        {
+            <p>@Model.Message</p>
+        }
+        @if (Model?.ShowRequestId == true)
+        {
+            <p><strong>Request ID:</strong> <code>@Model.RequestId</code></p>
+        }
+    </div>
+    <p>Please try again or contact support if the issue persists.</p>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Return to Home</a>
+</div>

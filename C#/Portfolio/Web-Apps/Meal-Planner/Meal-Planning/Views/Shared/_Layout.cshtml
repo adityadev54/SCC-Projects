@@ -1,0 +1,121 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Golden Menu</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!--  My Header Section-->
+    <header class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Golden Menu Logo Section-->
+            <a href="#" class="inline-block w-16 h-auto align-middle">
+                <video autoplay loop muted playsinline class="w-full h-auto rounded-md">
+                    <source src="~/assets/GM-Logo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <span class="sr-only">Golden Menu</span>
+            </a>
+
+
+            <!-- Mobile View  -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Nav-Links -->
+            <div id="menu" class="hidden md:flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 text-sm-12 font-medium transition-all duration-300 ease-in-out">
+                <a asp-controller="Home" asp-action="Index" class="flex items-center gap-1 text-gray-700 hover:text-green-600 transition">
+                    <i data-lucide="home" class="w-4 h-4"></i>
+                    <span>Home</span>
+                </a>
+
+
+                @if (HttpContextAccessor.HttpContext.Session.GetString("FirstName") != null)
+                {
+                    <a asp-controller="MealPlan" asp-action="MealPlanForm" class="flex items-center gap-1 text-gray-700 hover:text-green-600 transition">
+                        <i data-lucide="utensils-crossed" class="row-cols-4 h-4"></i>
+                        <span>Meal Planner</span>
+                    </a>
+                    <a asp-controller="Settings" asp-action="Settings" class="text-gray-500 hover:text-green-600 transition">
+                        Hello, @HttpContextAccessor.HttpContext.Session.GetString("FirstName")
+                    </a>
+                    <a asp-controller="User" asp-action="Logout" class="text-gray-700 hover:text-red-500 transition">Logout</a>
+                }
+                else
+                {
+                    <a asp-controller="User" asp-action="Login" class="text-gray-700 hover:text-green-600 transition">Log In</a>
+                }
+            </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden px-4 pt-2 pb-4 bg-white/90 backdrop-blur-md transition-all duration-300 ease-in-out">
+            <a asp-controller="Home" asp-action="Index" class="flex items-center gap-1 mb-2 text-gray-700 hover:text-green-600 transition">
+                <i data-lucide="home" class="w-4 h-4"></i>
+                <span>Home</span>
+            </a>
+
+            @if (HttpContextAccessor.HttpContext.Session.GetString("FirstName") != null)
+            {
+                <a asp-controller="MealPlan" asp-action="MealPlanForm" class="flex items-center gap-1 mb-2 text-gray-700 hover:text-green-600 transition">
+                    <i data-lucide="utensils-crossed" class="w-4 h-4"></i>
+                    <span>Meal Planner</span>
+                </a>
+                <a asp-controller="Settings" asp-action="Settings" class="flex items-center gap-1 text-gray-500 hover:text-green-600 transition">
+                    Hello, @HttpContextAccessor.HttpContext.Session.GetString("FirstName")
+                </a>
+                <a asp-controller="User" asp-action="Logout" class="flex items-center gap-1 block py-2 text-gray-700 hover:text-red-500">Logout</a>
+            }
+            else
+            {
+                <a asp-controller="User" asp-action="Login" class="block py-2 text-gray-700 hover:text-green-600">Log In</a>
+            }
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="pt-16">
+        <main class="px-0 py-0">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-4 text-center text-gray-500 text-sm mt-8">
+        <div class="max-w-7xl mx-auto">
+            &copy; 2025 - Golden Menu |
+            <a asp-controller="Home" asp-action="Privacy" class="hover:text-gray-700">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Minor Script -->
+    <script>
+        const toggleBtn = document.getElementById('menu-toggle');
+        const menuPanel = document.getElementById('mobile-menu');
+
+        toggleBtn.addEventListener('click', () => {
+            menuPanel.classList.toggle('hidden');
+        });
+
+        // Lucide Icons Activation
+        lucide.createIcons();
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,10 @@
+C:\repos\Programs - Practices\C# Course - 2025\Population\bin\Debug\Population.exe.config
+C:\repos\Programs - Practices\C# Course - 2025\Population\bin\Debug\Population.exe
+C:\repos\Programs - Practices\C# Course - 2025\Population\bin\Debug\Population.pdb
+C:\repos\Programs - Practices\C# Course - 2025\Population\obj\Debug\Population.csproj.AssemblyReference.cache
+C:\repos\Programs - Practices\C# Course - 2025\Population\obj\Debug\Population.MainForm.resources
+C:\repos\Programs - Practices\C# Course - 2025\Population\obj\Debug\Population.Properties.Resources.resources
+C:\repos\Programs - Practices\C# Course - 2025\Population\obj\Debug\Population.csproj.GenerateResource.cache
+C:\repos\Programs - Practices\C# Course - 2025\Population\obj\Debug\Population.csproj.CoreCompileInputs.cache
+C:\repos\Programs - Practices\C# Course - 2025\Population\obj\Debug\Population.exe
+C:\repos\Programs - Practices\C# Course - 2025\Population\obj\Debug\Population.pdb

@@ -1,0 +1,76 @@
+﻿@model FoodWebApp.Models.ProductViewModel
+@{
+    ViewData["Title"] = Model?.ProductName ?? "Product Details";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-6 fw-bold text-primary mb-3">@ViewData["Title"]</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+@if (Model == null)
+{
+    <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        <i class="fas fa-exclamation-circle me-2"></i>Product not found.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+else
+{
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="card-title mb-0"><i class="fas fa-utensils me-2"></i>@Model.ProductName</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-bold">ID</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+                        <dt class="col-sm-4 fw-bold">Brand</dt>
+                        <dd class="col-sm-8">@Model.Brand</dd>
+                        <dt class="col-sm-4 fw-bold">Price</dt>
+                        <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+                        <dt class="col-sm-4 fw-bold">Categories</dt>
+                        <dd class="col-sm-8">
+                            @foreach (var cat in Model.Categories ?? new List<string>())
+                            {
+                                <span class="badge category-badge me-1" data-category="@cat.ToLower()">@cat</span>
+                            }
+                        </dd>
+                        <dt class="col-sm-4 fw-bold">Created At</dt>
+                        <dd class="col-sm-8">@Model.CreatedAt.ToString("d MMM yyyy")</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold"><i class="fas fa-carrot me-2"></i>Nutriments</h6>
+                    @if (Model.Nutriment != null)
+                    {
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Calories:</strong> @((int?)Model.Nutriment.EnergyKcal ?? 0) kcal</li>
+                            <li class="list-group-item"><strong>Fat:</strong> @Model.Nutriment.Fat g</li>
+                            <li class="list-group-item"><strong>Carbohydrates:</strong> @Model.Nutriment.Carbohydrates g</li>
+                            <li class="list-group-item"><strong>Proteins:</strong> @Model.Nutriment.Proteins g</li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No nutriment data available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Index" class="btn btn-outline-primary shadow-sm">
+                <i class="fas fa-arrow-left me-2"></i>Back to List
+            </a>
+        </div>
+    </div>
+}

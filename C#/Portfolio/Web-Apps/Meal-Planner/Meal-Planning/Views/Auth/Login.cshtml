@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    /* Glass effect */
+    .glass {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Fade-in animation */
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    @@keyframes fadeInUp {
+        to
+
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>
+
+<!-- Gradient Theme Background -->
+<div class="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-white via-gray-100 to-green-100">
+
+    <!-- Glass Card Design-->
+    <div class="relative w-full max-w-md rounded-3xl shadow-xl glass p-8 fade-in-up">
+
+        <!-- Branding Icon --> <!-- Need to still add the icon later -->
+        <div class="flex justify-center mb-6">
+            @* <div class="bg-green-100 p-4 rounded-full shadow-md"> *@
+                <video class="h-20 w-20 rounded-full object-cover" autoplay loop muted>
+                    <source src="~/assets/GM-Logo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            @* </div> *@
+        </div>
+
+        <!-- Header Section -->
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-bold text-black tracking-tight">Welcome Back</h2>
+            <p class="text-sm text-gray-600">Access your Golden Menu account</p>
+        </div>
+
+        <!-- Error Message Seciton -->
+        @if (ViewBag.Error != null)
+        {
+            <div class="bg-red-100 text-red-700 border border-red-300 px-4 py-2 rounded-md mb-4 text-sm">
+                <strong>Error:</strong> @ViewBag.Error
+            </div>
+        }
+
+        <!-- Login Form -->
+        <form method="post" action="/User/Login" class="space-y-5">
+
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email"
+                       class="w-full border border-gray-300 focus:border-green-600 bg-white bg-opacity-60 py-2 px-4 text-black rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-200 transition duration-300"
+                       placeholder="you@example.com" required>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label for="pin" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="password" name="password"
+                       class="w-full border border-gray-300 focus:border-green-600 bg-white bg-opacity-60 py-2 px-4 text-black rounded-lg tracking-widest placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-200 transition duration-300"
+                       placeholder="●●●●●●●●" required>
+            </div>
+
+            <!-- Remember Me -->
+            <div class="flex items-center justify-between text-sm">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name= "rememberMe" class="form-checkbox text-green-600 focus:ring-green-500 rounded">
+                    <span class="ml-2 text-gray-600">Remember me</span>
+                </label>
+            </div>
+
+            <!-- Login -->
+            <div>
+                <button type="submit"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg font-semibold tracking-wide transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    Login
+                </button>
+            </div>
+
+            <!-- Register -->
+            <div class="text-center pt-4">
+                <p class="text-sm text-gray-500">
+                    Don’t have an account?
+                    <a href="/User/Register" class="text-green-600 hover:underline font-medium">Create one</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\bin\Debug\States.mdf
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\bin\Debug\States_log.ldf
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\bin\Debug\APatel Lab #3.exe.config
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\bin\Debug\APatel Lab #3.exe
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\bin\Debug\APatel Lab #3.pdb
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel Lab #3.csproj.AssemblyReference.cache
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel_Lab__3.DataCoreView.resources
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel_Lab__3.SplashView.resources
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel_Lab__3.MainView.resources
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel_Lab__3.Properties.Resources.resources
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel_Lab__3.SelectStateView.resources
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel Lab #3.csproj.GenerateResource.cache
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel Lab #3.csproj.CoreCompileInputs.cache
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel Lab #3.exe
+C:\repos\Programs - Practices\C# Course - 2025\APatel Lab #3\obj\Debug\APatel Lab #3.pdb
